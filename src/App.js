@@ -43,10 +43,12 @@ const App = () => {
         let { oScore } = scores;
         oScore += 1;
         setScores({ ...scores, oScore })
+        localStorage.setItem("oScore", oScore);
       } else {
         let { xScore } = scores;
         xScore += 1;
         setScores({ ...scores, xScore })
+        localStorage.setItem("xScore", xScore);
       }
     }
 
