@@ -21,6 +21,7 @@ const App = () => {
   const [board, setBoard] = useState(Array(9).fill(null))
   const [scores, setScores] = useState({ xScore: 0, oScore: 0 })
   const [gameOver, setGameOver] = useState(false);
+  const [winner, setWinner] = useState('');
 
   const handleBoxClick = (boxIdx) => {
     // Step 1: Update the board
@@ -49,6 +50,8 @@ const App = () => {
       }
     }
 
+    setWinner(winner);
+
     // Step 3: Change active player
     setXPlaying(!xPlaying);
   }
@@ -68,6 +71,7 @@ const App = () => {
   const resetBoard = () => {
     setGameOver(false);
     setBoard(Array(9).fill(null));
+    setWinner('');
   }
 
   return (
@@ -75,6 +79,10 @@ const App = () => {
       <ScoreBoard scores={scores} xPlaying={xPlaying} />
       <Board board={board} onClick={gameOver ? resetBoard : handleBoxClick} />
       <ResetButton resetBoard={resetBoard} />
+      <div className="theWinner">The Winner of the round: 
+        <br></br>
+        <h1>{winner}</h1>
+      </div>
     </div>
   );
 }

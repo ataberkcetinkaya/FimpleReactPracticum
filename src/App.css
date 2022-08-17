@@ -7,3 +7,9 @@ body {
   background-color: #efefef;
   font-family: "Fredoka", sans-serif;
 }
+
+.theWinner {
+  text-align: center;
+  font-size: 24px;
+  color: green;
+}
