@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Board } from "./components/Board";
 import { ResetButton } from "./components/ResetButton";
+import ResetStorageButton from "./components/ResetStorageButton";
 import { ScoreBoard } from "./components/ScoreBoard";
 import './App.css';
 
@@ -76,11 +77,17 @@ const App = () => {
     setWinner('');
   }
 
+  const resetStorage = () => {
+    localStorage.clear();
+    setScores({ xScore: 0, oScore: 0 });
+  }
+
   return (
     <div className="App">
       <ScoreBoard scores={scores} xPlaying={xPlaying} />
       <Board board={board} onClick={gameOver ? resetBoard : handleBoxClick} />
       <ResetButton resetBoard={resetBoard} />
+      <ResetStorageButton resetStorage={resetStorage} />
       <div className="theWinner">The Winner of the round: 
         <br></br>
         <h1>{winner}</h1>
